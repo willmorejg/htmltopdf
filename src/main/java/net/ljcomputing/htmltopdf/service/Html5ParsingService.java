@@ -18,15 +18,20 @@ under the License.
 
 James G Willmore - LJ Computing - (C) 2023
 */
-package net.ljcomputing.htmltopdf;
+package net.ljcomputing.htmltopdf.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.IOException;
+import org.w3c.dom.Document;
 
-@SpringBootApplication
-public class HtmltopdfApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(HtmltopdfApplication.class, args);
-    }
+public interface Html5ParsingService {
+    /**
+     * Parse an HTML 5 Document from a URL.
+     *
+     * <p>Original code: https://github.com/danfickle/openhtmltopdf/wiki/Integration-Guide
+     *
+     * @param urlStr
+     * @param timeoutMs
+     * @throws IOException
+     */
+    Document html5ParseDocument(String urlStr, int timeoutMs) throws IOException;
 }
