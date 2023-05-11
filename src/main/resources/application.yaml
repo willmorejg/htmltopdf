@@ -1,0 +1,11 @@
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+    serialization:
+      fail-on-empty-beans: false
+  freemarker:
+    suffix: .ftlh
+    cache: false
+    template-loader-path:
+      - classpath:/templates/
