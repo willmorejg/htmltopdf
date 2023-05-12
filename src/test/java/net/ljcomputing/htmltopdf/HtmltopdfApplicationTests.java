@@ -27,6 +27,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import net.ljcomputing.htmltopdf.service.Html5ParsingService;
+import net.ljcomputing.htmltopdf.service.PdfSigningService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -41,6 +43,7 @@ class HtmltopdfApplicationTests {
     @Autowired private Path outputDirectory;
     @Autowired private Html5ParsingService html5ParsingService;
     @Autowired private PdfRendererBuilder pdfRendererBuilder;
+    @Autowired private PdfSigningService pdfSigningService;
 
     @Test
     @Order(1)
@@ -50,7 +53,7 @@ class HtmltopdfApplicationTests {
 
     @Test
     @Order(10)
-    // @Disabled
+    @Disabled
     void createPdf() {
         Path testOutFile = outputDirectory.resolve("htmltopdftest.pdf");
 
@@ -64,5 +67,13 @@ class HtmltopdfApplicationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    @Order(11)
+    // @Disabled
+    void signPdf() throws Exception {
+        Path testOutFile = outputDirectory.resolve("htmltopdftest.pdf");
+        pdfSigningService.signPdf(testOutFile);
     }
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Signing Example</title>
+    <style>
+      @page {
+        -fs-max-overflow-pages: 100;
+        -fs-overflow-pages-direction: ltr;
+
+        @bottom-center {
+          /* Note the use of the -fs-if-cut-off function below. */
+          content: "Page " counter(page) -fs-if-cut-off(" (continued)") " of " counter(pages);
+          font-size: 12px;
+        }
+      }
+
+      @media print {
+        h1 {
+          page-break-before: always;
+        }
+        h2,
+        h3,
+        h4 {
+          page-break-after: avoid;
+        }
+        pre,
+        blockquote {
+          page-break-inside: avoid;
+        }
+      }
+
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-top: 0;
+        background: white;
+      }
+
+      html,
+      body,
+      div {
+        margin: 0;
+        padding: 0;
+      }
+
+      /*#header {
+        
+      }
+
+      #main {
+        background: white;
+      }*/
+
+      #primary {
+        max-width: 650px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="page">
+      <div id="header" class="site-header"></div>
+      <div id="main">
+        <div id="primary">
+          <div id="content" role="main">
+            <h1>Authorization Document</h1>
+            <p>Article content...</p>
+            <h1>Signature</h1>
+            <input type="text" name="signature"/>
+          </div>
+        </div>
+      </div>
+      <div id="footer" class="site-footer"></div>
+    </div>
+  </body>
+</html>
