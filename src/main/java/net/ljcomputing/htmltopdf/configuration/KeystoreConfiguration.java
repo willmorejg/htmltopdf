@@ -46,6 +46,7 @@ public class KeystoreConfiguration {
             keystore = KeyStore.getInstance("PKCS12");
             keystore.load(is, password.toCharArray());
         } catch (Exception e) {
+            e.printStackTrace();
             log.error("Error loading keystore bean: ", e);
             throw new RuntimeException("keystore is null");
         }
