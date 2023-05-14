@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.10'
-	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'org.springframework.boot' version '2.7.11'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'com.diffplug.spotless' version '6.15.0'
 	id 'org.ysb33r.doxygen' version '0.7.0'
 	id 'jacoco'
@@ -40,9 +40,15 @@ dependencies {
 	implementation 'com.openhtmltopdf:openhtmltopdf-svg-support:1.0.10'
 	implementation 'com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:1.0.0'
 
+	implementation 'org.apache.pdfbox:pdfbox:2.0.24'
+
 	implementation 'com.github.jtidy:jtidy:1.0.3'
 
-	implementation 'org.bouncycastle:bcpg-jdk15on:1.70'
+	implementation 'org.bouncycastle:bcjmail-jdk18on:1.73'
+	implementation 'org.bouncycastle:bcpkix-jdk18on:1.73'
+	implementation 'org.bouncycastle:bcprov-jdk18on:1.73'
+	implementation 'org.bouncycastle:bcutil-jdk18on:1.73'
+	implementation 'org.bouncycastle:bcpg-jdk18on:1.73'
 
 	compileOnly 'org.projectlombok:lombok'
 

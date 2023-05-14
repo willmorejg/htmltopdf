@@ -20,9 +20,8 @@ James G Willmore - LJ Computing - (C) 2023
 */
 package net.ljcomputing.htmltopdf.service;
 
-import java.nio.file.Path;
-import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;
+import net.ljcomputing.htmltopdf.model.SignatureCredentials;
 
-public interface PdfSigningService {
-    void signPdf(Path pdf, PDSignature signature);
+public interface KeyStoreService {
+    SignatureCredentials retrieveCredentials();
 }

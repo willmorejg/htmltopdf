@@ -26,8 +26,10 @@ import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
+import java.util.Calendar;
 import net.ljcomputing.htmltopdf.service.Html5ParsingService;
 import net.ljcomputing.htmltopdf.service.PdfSigningService;
+import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -73,7 +75,15 @@ class HtmltopdfApplicationTests {
     @Order(11)
     // @Disabled
     void signPdf() throws Exception {
+        PDSignature signature = new PDSignature();
+        signature.setFilter(PDSignature.FILTER_ADOBE_PPKLITE);
+        signature.setSubFilter(PDSignature.SUBFILTER_ADBE_PKCS7_DETACHED);
+        signature.setName("James G Willmore");
+        signature.setLocation("Union, NJ");
+        signature.setReason("Test Signature");
+        signature.setSignDate(Calendar.getInstance());
+
         Path testOutFile = outputDirectory.resolve("htmltopdftest.pdf");
-        pdfSigningService.signPdf(testOutFile);
+        pdfSigningService.signPdf(testOutFile, signature);
     }
 }

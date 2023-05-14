@@ -18,11 +18,18 @@ under the License.
 
 James G Willmore - LJ Computing - (C) 2023
 */
-package net.ljcomputing.htmltopdf.service;
+package net.ljcomputing.htmltopdf.model;
 
-import java.nio.file.Path;
-import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;
+import java.security.PrivateKey;
+import java.security.cert.Certificate;
+import lombok.Data;
 
-public interface PdfSigningService {
-    void signPdf(Path pdf, PDSignature signature);
+@Data
+public class SignatureCredentials {
+    private PrivateKey privateKey;
+    private Certificate[] certificateChain;
+
+    public boolean isValid() {
+        return privateKey != null && certificateChain != null;
+    }
 }
